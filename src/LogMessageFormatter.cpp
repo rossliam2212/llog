@@ -35,7 +35,7 @@ namespace llog {
             oss << "[" << logLevel << "]";
         }
 
-        if (logLevel.length() <= 4) {
+        if (logLevel.length() == 4) {
             oss << std::left << std::setw(2) << "";
         } else {
             oss << std::left << std::setw(1) << "";
@@ -97,6 +97,8 @@ namespace llog {
                     int arg{message[pos+1] - '0'};
                     oss << args.at(arg);
                     pos+=3;
+                } else {
+                    pos++;
                 }
             } else {
                 oss << message[pos];
