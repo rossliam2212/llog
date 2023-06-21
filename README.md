@@ -30,25 +30,25 @@ int main() {
 ```
 ### Output
 ```
-20/06/23 16:27:08 [info]  [main.cpp@18] Info log message
-20/06/23 16:27:08 [debug] [main.cpp@19] Debug log message
-20/06/23 16:27:08 [warn]  [main.cpp@20] Warning log message
-20/06/23 16:27:08 [error] [main.cpp@21] Error log message
-20/06/23 16:27:08 [fatal] [main.cpp@22] Fatal log message
+21/06/23 10:05:20 [INFO]  Basic INFO message
+21/06/23 10:05:20 [DEBUG] Basic DEBUG message
+21/06/23 10:05:20 [WARN]  Basic WARN message
+21/06/23 10:05:20 [ERROR] Basic ERROR message
+21/06/23 10:05:20 [FATAL] Basic FATAL message
 
 
-20/06/23 16:27:08 [info]  [main.cpp@26] Info log message
-20/06/23 16:27:08 [debug] [main.cpp@27] Debug log message
-20/06/23 16:27:08 [warn]  [main.cpp@28] Warning log message
-20/06/23 16:27:08 [error] [main.cpp@29] Error log message
-20/06/23 16:27:08 [fatal] [main.cpp@30] Fatal log log
+21/06/23 10:05:20 [INFO]  [main.cpp@30] Info log message
+21/06/23 10:05:20 [DEBUG] [main.cpp@31] Debug log message
+21/06/23 10:05:20 [WARN]  [main.cpp@32] Warning log message
+21/06/23 10:05:20 [ERROR] [main.cpp@33] Error log message
+21/06/23 10:05:20 [FATAL] [main.cpp@34] Fatal log message
 
 
-20/06/23 16:27:08 [info]  Basic INFO message
-20/06/23 16:27:08 [debug] Basic DEBUG message
-20/06/23 16:27:08 [warn]  Basic WARN message
-20/06/23 16:27:08 [error] Basic ERROR message
-20/06/23 16:27:08 [fatal] Basic FATAL message
+21/06/23 10:05:20 [INFO]  [main.cpp@39] Info log message
+21/06/23 10:05:20 [DEBUG] [main.cpp@40] Debug log message
+21/06/23 10:05:20 [WARN]  [main.cpp@41] Warning log message
+21/06/23 10:05:20 [ERROR] [main.cpp@42] Error log message
+21/06/23 10:05:20 [FATAL] [main.cpp@43] Fatal log log
 ```
 
 <img src="images/output1.png">
