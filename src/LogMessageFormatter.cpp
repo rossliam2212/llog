@@ -44,7 +44,14 @@ namespace llog {
         // File name & Line number
         std::string fileName{logMessage.getMetaData().getFileName()};
         if (fileName.compare("") != 0) {
-            oss << "[" << logMessage.getMetaData().getFileName() << "@" << logMessage.getMetaData().getLineNumber() << "] ";
+            oss << "[" << logMessage.getMetaData().getFileName() << "@";
+
+            std::size_t ln{logMessage.getMetaData().getLineNumber()};
+            if (ln >= 10) {
+                oss << ln << "] ";
+            } else {
+                oss << ln << "]  ";
+            }
         }
 
         // Log message
