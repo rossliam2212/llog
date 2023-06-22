@@ -1,4 +1,4 @@
-# llog - Simple C++ logging library
+## llog - Simple C++ logger
 
 ### Basic Usage
 ```c++
@@ -13,22 +13,23 @@ int main() {
     llog::fatal("Basic FATAL message");
     
     // Macro logs
-    LLOG_INFO("Info log message");
-    LLOG_DEBUG("Debug log message");
-    LLOG_WARN("Warning log message");
-    LLOG_ERROR("Error log message");
-    LLOG_Fatal("Fatal log message");
+    LLOG_INFO("Info log message")
+    LLOG_DEBUG("Debug log message")
+    LLOG_WARN("Warning log message")
+    LLOG_ERROR("Error log message")
+    LLOG_Fatal("Fatal log message")
     
     // Macro logs w/ positional args
-    LLOG_INFO("{} {} {}", "Info", "log", "message");
-    LLOG_DEBUG("{0} {1} {2}", "Debug", "log", "message");
-    LLOG_WARN("{} {1} {2}", "Warning", "log", "message");
-    LLOG_ERROR("{} {} {2}", "Error", "log", "message");
-    LLOG_Fatal("{} {1} {}", "Fatal", "log", "message");
+    LLOG_INFO("{} {} {}", "Info", "log", "message")
+    LLOG_DEBUG("{0} {1} {2}", "Debug", "log", "message")
+    LLOG_WARN("{} {1} {2}", "Warning", "log", "message")
+    LLOG_ERROR("{} {} {2}", "Error", "log", "message")
+    LLOG_Fatal("{} {1} {}", "Fatal", "log", "message")
+    
     return 0;
 }
 ```
-### Output
+#### Output
 ```
 21/06/23 10:05:20 [INFO]  Basic INFO message
 21/06/23 10:05:20 [DEBUG] Basic DEBUG message
@@ -52,3 +53,48 @@ int main() {
 ```
 
 <img src="images/output1.png">
+
+
+### Customization
+#### Enabling & Disabling log levels
+```c++
+llog::Config cfg;
+
+cfg.disableInfoLogLevel();  // Disable INFO level
+cfg.disableDebugLogLevel(); // Disable DEBUG level
+cfg.disableWarnLogLevel();  // Disable WARN level
+cfg.disableErrorLogLevel(); // Disable ERROR level
+cfg.disableFatalLogLevel(); // Disable FATAL level
+
+cfg.enableInfoLogLevel();  // Enable INFO level  
+cfg.enableDebugLogLevel(); // Enable DEBUG level
+cfg.enableWarnLogLevel();  // Enable WARN level
+cfg.enableErrorLogLevel(); // Enable ERROR level
+cfg.enableFatalLogLevel(); // Enable FATAL level
+
+llog::setLoggerConfig(cfg); // Set the loggers config
+```
+
+### Stopwatch
+```c++
+#include <llog/llog.hpp>
+#include <thread>
+
+int main() {
+    llog::StopWatch sw;
+    std::this_thread::sleep_for(std::chrono::seconds(3));
+    
+    LLOG_DEBUG("Time elapsed: {}μs", sw.elapsedMicroseconds())
+    LLOG_DEBUG("Time elapsed: {}ms", sw.elapsedMilliseconds())
+    LLOG_DEBUG("Time elapsed: {}s", sw.elapsedSeconds())
+    
+    return 0;
+}
+```
+
+#### Output
+```
+21/06/23 14:44:07 [DEBUG] [main.cpp@49] Time elapsed: 3005058μs
+21/06/23 14:44:07 [DEBUG] [main.cpp@50] Time elapsed: 3005ms
+21/06/23 14:44:07 [DEBUG] [main.cpp@51] Time elapsed: 3s
+```
