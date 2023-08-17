@@ -27,8 +27,8 @@ set(SOURCE_FILES
 # Create the executable
 add_executable(<your_project> ${SOURCE_FILES})
 
-# Link against the dt library
-target_link_libraries(<your_project> PRIVATE ${DT_LIBRARIES})
+# Link against the llog library
+target_link_libraries(<your_project> PRIVATE ${LLOG_LIBRARIES})
 ```
 
 #### 3. Use llog
