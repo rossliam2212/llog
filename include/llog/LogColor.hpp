@@ -20,7 +20,7 @@ namespace llog {
         void setDefaultColors();
 
     private:
-        std::array<std::string, 6> colors;
+        std::array<std::string, levels::NUMBER_OF_LOG_LEVELS> colors;
 
         static constexpr const char* WHITE{"\x1B[97m"};
         static constexpr const char* GREEN{"\x1B[32m"};

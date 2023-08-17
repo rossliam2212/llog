@@ -21,6 +21,7 @@ namespace llog::levels {
         Fatal,
         None
     };
+    static constexpr int NUMBER_OF_LOG_LEVELS{6};
     std::string_view logLevelToStringUpper(LogLevel level);
     std::string_view logLevelToStringLower(LogLevel level);
     std::string_view logLevelToStringIdUpper(LogLevel level);

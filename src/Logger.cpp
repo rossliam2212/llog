@@ -10,10 +10,19 @@ namespace llog {
         std::string formattedLog{LogMessageFormatter::format(lm, config)};
     }
 
+    /**
+     * @brief Sets the loggers config.
+     * @param cfg
+     *          The config to apply to the logger.
+     */
     void Logger::setConfig(const Config& cfg) {
         config = cfg;
     }
 
+    /**
+     * @brief Gets the loggers config.
+     * @return The loggers config.
+     */
     Config Logger::getConfig() const {
         return config;
     }

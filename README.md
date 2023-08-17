@@ -1,5 +1,52 @@
 ## llog - Simple C++ logger
 
+### How to build & use:
+#### 1. Clone repo and install
+```bash
+$ git clone https://github.com/<your_username>/llog.git
+$ mikdir build && cd build
+$ sudo cmake --build . --target install
+```
+#### 2. Setup your CMakeLists.txt
+```cmake
+cmake_minimum_required(VERSION 3.21)
+project(<your_project>)
+
+set(CMAKE_CXX_STANDARD 17)
+
+# Add the include directories
+include_directories(/usr/local/include)
+
+# Find the dt library
+find_package(llog REQUIRED)
+
+# Add the source files
+set(SOURCE_FILES 
+        test.cpp)
+
+# Create the executable
+add_executable(<your_project> ${SOURCE_FILES})
+
+# Link against the dt library
+target_link_libraries(<your_project> PRIVATE ${DT_LIBRARIES})
+```
+
+#### 3. Use llog
+```c++
+#include <llog/llog.hpp>
+
+int main() {
+    LLOG_ERROR("Error Message")
+   
+    return 0;
+}
+```
+##### Output:
+```bash
+17/08/23 09:53:19 [ERROR] [test.cpp@24] Error Message
+```
+
+
 ### Basic Usage
 ```c++
 #include <llog/llog.hpp>
@@ -73,6 +120,35 @@ cfg.enableErrorLogLevel(); // Enable ERROR level
 cfg.enableFatalLogLevel(); // Enable FATAL level
 
 llog::setLoggerConfig(cfg); // Set the loggers config
+```
+
+#### Changing log level style
+```c++
+llog::Config cfg;
+
+cfg.useLowercaseLogLevels(); // Sets the log level to lowercase -> [info] / [i]
+
+cfg.useUppercaseLogLevels(); // Sets the log level to uppercase -> [INFO] / [I]
+
+cfg.useLogLevelId(); // Sets the log level to its ID -> [i] / [I]
+
+cfg.useFullLogLevel(); // Sets the log level to its full version -> [info] / [INFO]
+
+llog::setLoggerConfig(cfg); // Set the loggers config
+```
+
+#### Changing timestamp pattern
+```c++
+llog::Config cfg;
+
+const char* newPattern{"%Y-%m-%d %H:%M:%S"};
+cfg.setTimeStampPattern(newPattern); // Changes the timestamp pattern
+
+llog::setLoggerConfig(cfg); // Set the loggers config
+```
+#### Output
+```
+2023-06-22 12:55:50 [ERROR] [main.cpp@49] Error log message
 ```
 
 ### Stopwatch

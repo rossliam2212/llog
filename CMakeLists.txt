@@ -29,7 +29,29 @@ set(SOURCE_FILES
         src/TimeStampClock.cpp
         src/StopWatch.cpp)
 
-add_executable(llog src/main.cpp ${HEADER_FILES} ${SOURCE_FILES})
+#add_executable(llog src/main.cpp ${HEADER_FILES} ${SOURCE_FILES})
+
+# Library
+add_library(llog STATIC ${SOURCE_FILES})
+target_include_directories(llog PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
+)
+install(TARGETS llog EXPORT llogTargets ARCHIVE DESTINATION lib)
+install(EXPORT llogTargets FILE llogTargets.cmake NAMESPACE llog:: DESTINATION lib/cmake/llog)
+install(FILES cmake/llog-config.cmake DESTINATION lib/cmake/llog)
+
+install(FILES include/llog/Config.hpp DESTINATION include/llog)
+install(FILES include/llog/llog.hpp DESTINATION include/llog)
+install(FILES include/llog/LogColor.hpp DESTINATION include/llog)
+install(FILES include/llog/Logger.hpp DESTINATION include/llog)
+install(FILES include/llog/LoggerManager.hpp DESTINATION include/llog)
+install(FILES include/llog/LogLevel.hpp DESTINATION include/llog)
+install(FILES include/llog/LogMessage.hpp DESTINATION include/llog)
+install(FILES include/llog/LogMessageFormatter.hpp DESTINATION include/llog)
+install(FILES include/llog/LogMetaData.hpp DESTINATION include/llog)
+install(FILES include/llog/StopWatch.hpp DESTINATION include/llog)
+install(FILES include/llog/TimeStampClock.hpp DESTINATION include/llog)
 
 
 find_package(Catch2 3 REQUIRED)
